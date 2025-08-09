@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree/control/button[@name='action_add_from_catalog']" position="after">
+                <button name="action_add_from_configurations" string="Configurator" type="object" class="px-4 btn-link" context="{'order_id': parent.id}"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+                <field name="product_components" column_invisible="True"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_view_form" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.cosal.product.configurator</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='product_template_id']" position="attributes">
+                <attribute name="column_invisible">0</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='product_template_id']" position="after">
+                <field name="mrp_location_src_id" optional="hide" />
+                <field name="product_template_attribute_value_ids" column_invisible="1" />
+                <field name="product_custom_attribute_value_ids" column_invisible="1" >
+                    <tree>
+                        <field name="custom_product_template_attribute_value_id" />
+                        <field name="custom_value" />
+                    </tree>
+                </field>
+                <field name="product_no_variant_attribute_value_ids" column_invisible="1" />
+                <field name="is_configurable_product" column_invisible="1" />
+                <field name="mrp_id" column_invisible="1" />
+            </xpath>
+            <xpath expr="//tree/field[@name='product_id']" position="attributes">
+                <attribute name="optional">hide</attribute>
+                <attribute name="string">Product Variant</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='name']" position="after">
+                <field name="wiz_component_id" column_invisible="1"/>
+                <button name="action_open_wizard_components"
+                    type="object"
+                    class="btn-primary"
+                    icon="fa-edit" >
+                    <span>Open</span>
+                </button>                
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

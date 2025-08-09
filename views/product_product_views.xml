@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_attribute_view_form" model="ir.ui.view">
+        <field name="name">product.attribute.form</field>
+        <field name="model">product.attribute</field>
+        <field name="inherit_id" ref="product.product_attribute_view_form"/>
+        <field name="arch" type="xml">
+            <field name="create_variant" position="after">
+                <field name="attribute_cosal" />
+            </field>
+        </field>
+    </record>
+
+    <record id="product_template_form_view_inh_cosal" model="ir.ui.view">
+        <field name="name">product_template_form_view_inh_wide</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <group name="group_lots_and_weight" position="inside">
+                <field name="product_cosal" />
+            </group>
+        </field>
+    </record>
+
+    <record id="product_normal_form_view_cosal" model="ir.ui.view">
+        <field name="name">product_template_form_view_inh_wide</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[@name='product_form']/notebook[1]/page[@name='general_information']/group[1]/group[@name='group_general']" position="inside">
+                <field name="product_wide_qty" string="Ancho" />
+                <field name="product_long_qty" string="Largo" />
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="mrp_production_form_view_cosal" model="ir.ui.view">
+        <field name="name">mrp.production.form.cosal</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Comentarios" name="product_comments">
+                    <group>
+                        <field 
+                            name="product_comment" 
+                            string="Comentario / Observaciones"
+                            nolabel="1" colspan="2" />
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+
+</odoo>

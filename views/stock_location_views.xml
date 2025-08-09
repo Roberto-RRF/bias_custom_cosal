@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_location_form_cosal_inherit" model="ir.ui.view">
+        <field name="name">stock.location.form.cosal.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='localization']" position="after">
+                <group string="Integración COSAL" name="cosal_integration" groups="base.group_system">
+                    <field name="x_consider_for_cosal_quoter"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
