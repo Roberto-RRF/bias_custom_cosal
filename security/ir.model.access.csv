@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_order_manager,sale_order_manager,model_sale_order,,1,1,1,1
+access_sale_product_configuration_manager,sale_product_configuration_manager,model_sale_product_configuration,,1,1,1,1
+access_sale_product_configuration_combination_manager,sale_product_configuration_combination_manager,model_sale_product_configuration_combination,,1,1,1,1
+access_sale_product_configuration_cortes_manager,sale_product_configuration_cortes_manager,model_sale_product_configuration_cortes,,1,1,1,1
